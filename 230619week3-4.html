@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="task" type="text" placeholder="너가 할 일">
+        <input id="taskSubmit" type="submit">
+    </form>
+    <section>
+        <ol id="list">
+        
+        </ol>
+    </section>
+</body>
+<script>
+    let task = document.getElementById('task');
+    let taskList = [];
+    function removeTodo(i) {
+      taskList.splice(i, 1);
+    }
+    function render() {
+        console.log(taskList)
+        list.innerHTML = taskList.join('');
+    }
+    document.getElementById('taskSubmit').addEventListener('click', (e) => {
+        e.preventDefault();
+        let list = document.getElementById('list')
+        taskList.push(
+            `
+            <li id='li'>${task.value} <button id="btn" key='${taskList.length}'>삭제</button></li>
+            `    
+        )
+        render();
+        let btn = document.querySelectorAll('#btn');
+        taskList.forEach.call(btn, (col) => {
+            col.addEventListener('click', remove);
+        });
+        function remove(e) {
+            let keyValue = e.target.attributes[1].value;
+            taskList.splice(keyValue, 1);   
+        }
+    })
+
+    //렌더링 이슈
+</script>
+
+
+</html>

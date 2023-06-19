@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sa">
+        <h3>사과</h3>
+        <p class="price">1,000원</p>
+        <button class="sa_btn">장바구니 추가</button>
+    </div>
+    <div class="ba">
+        <h3>바나나</h3>
+        <p class="price">2,000원</p>
+        <button class="ba_btn">장바구니 추가</button>
+    </div>
+    <div class="cart">
+        <h3>장바구니</h3>
+    </div>
+</body>
+    <script>
+        const sa = document.querySelector('.sa');
+        const ba = document.querySelector('.ba');
+        const sabtn = document.querySelector('.sa_btn');
+        const babtn = document.querySelector('.ba_btn');
+        const cartDom = document.querySelector('.cart');
+        sabtn.addEventListener('click', () => {
+            let p = document.createElement('p');
+            p.innerHTML = (`${sa.getElementsByTagName('h3')[0].innerText} - ${sa.getElementsByTagName('p')[0].innerText}`)
+            cartDom.appendChild(p);
+        });
+        babtn.addEventListener('click', () => {
+            let p = document.createElement('p');
+            p.innerHTML = (`${ba.getElementsByTagName('h3')[0].innerText} - ${ba.getElementsByTagName('p')[0].innerText}`)
+            cartDom.appendChild(p);
+        });
+    </script>
+</html>

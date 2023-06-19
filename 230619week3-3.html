@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="chatZone">
+
+    </div>
+    <div id="inputZone">
+    <form id="userOne">
+        <input type="text" id="userOne_name" placeholder="사용자명">
+        <br>
+        <input type="text" id="userOne_cont" placeholder="내용">
+        <input id="userOnesubmit" type="submit" value="Submit">
+    </form>
+    <form id="userTwo">
+        <input type="text" id="userTwo_name" placeholder="사용자명">
+        <br>
+        <input type="text" id="userTwo_cont" placeholder="내용">
+        <input id="userTwosubmit" type="submit" value="Submit">
+    </form>
+    </div>
+</body>
+<script>
+    let userOne_name = document.getElementById('userOne_name');
+    let userOne_cont = document.getElementById('userOne_cont');
+    let userTwo_name = document.getElementById('userTwo_name');
+    let userTwo_cont = document.getElementById('userTwo_cont');
+
+    /** 함수처리하는게 낫긴 할듯 */
+    document.getElementById('userOnesubmit').addEventListener('click', (e) => {
+        e.preventDefault();
+        let p = document.createElement('p');
+        p.setAttribute("class", "userOneTalk");
+        p.innerHTML = `<b>${userOne_name.value}</b> : ${userOne_cont.value}`
+        document.querySelector('#chatZone').append(p);
+    })
+    document.getElementById('userTwosubmit').addEventListener('click', (e) => {
+        e.preventDefault();
+        let p = document.createElement('p');
+        p.setAttribute("class", "userTwoTalk");
+        p.innerHTML = `<b>${userTwo_name.value}</b> : ${userTwo_cont.value}`
+        document.querySelector('#chatZone').append(p);
+    })
+</script>
+<style>
+    #inputZone {
+        position: fixed;
+        margin: 0 auto;
+        width: 50vw;
+        display: flex;
+        justify-content: space-between;
+        bottom: 10px;
+    }
+    #chatZone {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+    }
+    #chatZone .userOneTalk {
+        display: flex;
+    }
+    #chatZone .userTwoTalk {
+        display: flex;
+        justify-content: flex-end;
+    }
+</style>
+</html>

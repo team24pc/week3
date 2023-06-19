@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="title_form">제목 : </label>
+        <input type="text" id="title_form" placeholder="제목">
+        <br>
+        <label for="content_form">내용 : </label>
+        <input type="text" id="content_form" placeholder="내용">
+        <input id="submit" type="submit" value="Submit">
+    </form>
+    <div class="item">
+        <h3>제목</h3>
+        <p>내용</p>
+        <hr>
+    </div>
+</body>
+    <script>
+        let title_form = document.getElementById('title_form');
+        let content_form = document.getElementById('content_form');
+        
+        document.getElementById("submit").addEventListener('click', (e) => {
+            e.preventDefault()
+            let h = document.createElement('h3')
+            let p = document.createElement('p')
+            let hr = document.createElement('hr');
+            h.innerText = title_form.value;
+            p.innerText = content_form.value;
+            document.querySelector('.item').append(h, p, hr);
+        })
+    </script>
+</html>
