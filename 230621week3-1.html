@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const IntroBlock = (props) => {
+            return (
+                <>
+                    <h3>{props.목차}</h3>
+                    <p>{props.내용}</p>
+                </>
+            )
+        }
+
+        const Introduce = () => {
+
+            return (
+                <div>
+                    <h1>자기 소개서</h1>
+                    <IntroBlock 목차={'학력'} 내용={'한국대학교'}/>
+                    <IntroBlock 목차={'직무'} 내용={'프론트엔드 웹 개발자'}/>
+                    <IntroBlock 목차={'스킬'} 내용={'html, css, js, react'}/>
+                    <IntroBlock 목차={'특기'} 내용={'잘하기'}/>
+                    <IntroBlock 목차={'취미'} 내용={'못하기'}/>
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <Introduce />, document.getElementById("root")
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+       
+        const InputSearch = () => {
+            // const [search, setSearch] = React.useState('');
+            // let api = `https://www.goodchoice.kr/product/result?keyword=${search}`;
+            
+            function searchValue(e) {
+                e.preventDefault();
+                // setSearch(e.target[0].value);
+                location.assign(`https://www.goodchoice.kr/product/result?keyword=${e.target[0].value}`);
+            }
+            return (
+                <>
+                    <h3>가고 싶은 곳을 써보세요.</h3>
+                    <form onSubmit={searchValue}>
+                        <input type='text' placeholder='런던'/>
+                        <input type='submit' />
+                    </form>
+                </>
+            )
+        }
+
+        const Introduce = () => {
+
+            return (
+                <div>
+                    <h1>Gago</h1>
+                    <InputSearch />
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <Introduce />, document.getElementById("root")
+        )
+    </script>
+</body>
+</html>

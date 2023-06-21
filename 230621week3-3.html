@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const ButtonValue = (e) => {
+            console.log(e.target.value)
+            return (
+                <>
+                    <h3>{props.목차}</h3>
+                    <p>{props.내용}</p>
+                </>
+            )
+        }
+
+        const Introduce = () => {
+            const [prevValue, setPrevValue] = React.useState(0);
+            const [inputValue, setInputValue] = React.useState('');
+            function buttonHandler(e) {
+                setInputValue(inputValue + e.target.value);
+                
+            }
+            function add() {
+                setPrevValue(prevValue + parseInt(inputValue));
+                setInputValue('');
+            }
+            function sub() {
+                setPrevValue(prevValue - parseInt(inputValue));
+                setInputValue('');
+            }
+            function multi() {
+                setPrevValue(prevValue * parseInt(inputValue));
+                setInputValue('');
+            }
+            function divis() {
+                setPrevValue(prevValue / parseInt(inputValue));
+                setInputValue('');
+            }
+            function ans() {
+                setInputValue(prevValue.toString())
+                console.log(inputValue)
+            }
+
+            return (
+                <div>
+                    <h1>계산기</h1>
+                    <div className='container'>
+                        <input type='text' className='input' value={inputValue}></input>
+                        <input type='number' className='input1' value={prevValue}></input>
+                        <button className='num1' value='1' onClick={buttonHandler}>1</button>
+                        <button className='num2' value='2' onClick={buttonHandler}>2</button>
+                        <button className='num3' value='3' onClick={buttonHandler}>3</button>
+                        <button className='num4' value='4' onClick={buttonHandler}>4</button>
+                        <button className='num5' value='5' onClick={buttonHandler}>5</button>
+                        <button className='num6' value='6' onClick={buttonHandler}>6</button>
+                        <button className='num7' value='7' onClick={buttonHandler}>7</button>
+                        <button className='num8' value='8' onClick={buttonHandler}>8</button>
+                        <button className='num9' value='9' onClick={buttonHandler}>9</button>
+                        <button className='num0' value='0' onClick={buttonHandler}>0</button>
+                        <button className='plus' value='+' onClick={add}>+</button>
+                        <button className='minus' value='-' onClick={sub}>-</button>
+                        <button className='mult' value='*' onClick={multi}>*</button>
+                        <button className='divi' value='/' onClick={divis}>/</button>
+                        <button className='ans' value='=' onClick={ans}>=</button>
+
+                    </div>
+                </div>
+            )
+        }
+        ReactDOM.render(
+            <Introduce />, document.getElementById("root")
+        )
+    </script>
+</body>
+<style>
+    .container {
+        width: 600px;
+        height: 500px;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "input input input1 plus"
+    "num1 num2 num3 minus"
+    "num4 num5 num6 mult"
+    "num7 num8 num9 divi"
+    ". num0 . ans"; 
+}
+    .input { grid-area: input; }
+    .input1 { grid-area: input1; }
+    .plus { grid-area: plus; }
+    .minus { grid-area: minus; }
+    .mult { grid-area: mult; }
+    .divi { grid-area: divi; }
+    .ans { grid-area: ans; }
+    .num1 { grid-area: num1; }
+    .num2 { grid-area: num2; }
+    .num3 { grid-area: num3; }
+    .num4 { grid-area: num4; }
+    .num5 { grid-area: num5; }
+    .num6 { grid-area: num6; }
+    .num7 { grid-area: num7; }
+    .num8 { grid-area: num8; }
+    .num9 { grid-area: num9; }
+    .num0 { grid-area: num0; }
+</style>
+</html>
