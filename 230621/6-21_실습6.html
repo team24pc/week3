@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      function App() {
+        const [idx, setIdx] = React.useState(0);
+        const images = [
+          "/6.21/images/1.jpg",
+          "/6.21/images/2.jpg",
+          "/6.21/images/3.jpg",
+          "/6.21/images/4.jpg",
+          "/6.21/images/5.jpg",
+        ];
+        function nextClickHandler() {
+          if (idx === 4) setIdx(() => 0);
+          else setIdx((cur) => cur + 1);
+        }
+        function prevClickHandler() {
+          if (idx === 0) setIdx(() => images.length - 1);
+          else setIdx((cur) => cur - 1);
+        }
+
+        return (
+          <div>
+            <img src={images[idx]} alt="" width="300px" height="300px" />
+            <p>
+              <button onClick={prevClickHandler}>prev</button>
+              <button onClick={nextClickHandler}>next</button>
+            </p>
+          </div>
+        );
+      }
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
